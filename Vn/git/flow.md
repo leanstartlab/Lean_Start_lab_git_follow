@@ -69,7 +69,7 @@ Từ đây, Central Repository và Forked Repository sẽ được gọi lần l
 
 7. Nếu trên 2 người reviewer đồng ý với pull-request, người reviewer cuối cùng sẽ thực hiện việc merge pull-request.
    Revewer xác nhận sự đồng ý bằng comment OK.
-   
+
 8. Quay trở lại 1.
 
 

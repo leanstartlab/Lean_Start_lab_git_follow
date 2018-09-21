@@ -10,9 +10,17 @@ Reference flow: [A successful Git branching model](http://nvie.com/posts/a-succe
 * Decided reviewer and person who will merge pull request
 
 ### Principle
-* Each pull request will match with only 1 redmine ticket and have only 1 commit.
+* Each pull request will match with only 1 redmine ticket.
+* Each pull-request does not limit the number of commits.
 * Title of commit will be `refs [tracker of ticket] #[number of ticket] [title of ticket]`. (For example: `refs bug #1234 Can not remove cache`).
-* Updating code of master branch on local is prohibited, please create a new branch to do your task.
+* For the commit title, in the case of pull-request there is only one commit, then the commit name is the same as above. `Refs [Ticket Type] # [Ticket Number] [Ticket Content]` (Example: `refs bug # 1234 Fixed a cache error. \
+* However, if a ppull-request contains multiple commits, it must be specified in the commit title that the response handles in the commit.
+     * For example:
+         Pull-request title: `refs bug # 1234 Fixed a cache error
+         2. In case pull-request has 2 commits, the commit title of commit 2 will be as follows
+             * `Create method for clearing cache in Model`
+             * `The controller calls the method in the model to perform a clear cache
+* In the local environment, the code can not be changed in the branch master. Must work on branch initialization to do task.
 
 ### Prepare
 
@@ -30,6 +38,41 @@ Reference flow: [A successful Git branching model](http://nvie.com/posts/a-succe
     ```
 
 ### Develop
+
+From now, we will call central repository as `upstream`, forked repository as `origin`.
+
+1. Sync local's master branch with upstream's master branch.
+    ```sh
+    $ git checkout master
+    $ git pull upstream master
+    ```
+
+2. Create new branch to do task from master branch on local. Name of branch should be number of that task.(For example: `task/1234`)
+    ```sh
+    $ git checkout master # <--- unnecessary in case already on master branch
+    $ git checkout -b task/1234
+    ```
+
+3. Do your task (Freedomly create multiple commits).
+
+4. Push code to `origin`
+
+    ```sh
+    $ git push origin task/1234
+    ```
+
+5. On Github (Bitbucket), create pull request from origin's  `task/1234` to upstream's `master` branch.
+
+6. Paste pull request page's URL to Slack group, ask reviewer to have code-review.
+
+    6.1. If reviewer asks you to fix something, do 3. ~ 5. step.
+    6.2. Repaste pull request page's URL to Slack group, ask reviewer to have code-review.
+
+7.  When more than 2 reviewers gave you OK comment, reviewer who gave the final OK comment will merge that pull request.
+
+8. Back to 1 step.
+
+### For projects corresponding provisions applicable with 1 pull-request only allows 1 commit
 
 From now, we will call central repository as `upstream`, forked repository as `origin`.
 
@@ -73,7 +116,7 @@ From now, we will call central repository as `upstream`, forked repository as `o
 
 8. On Github (Bitbucket), create pull request from origin's  `task/1234` to upstream's `master` branch.
 
-9. Paste pull request page's URL to chatwork group, ask reviewer to have code-review.
+9. Paste pull request page's URL to Slack group, ask reviewer to have code-review.
 
     9.1. If reviewer asks you to fix something, do 3. ~ 6. step.
 
@@ -82,9 +125,10 @@ From now, we will call central repository as `upstream`, forked repository as `o
     $ git push origin task/1234 -f
     ```
 
-    9.3. Repaste pull request page's URL to chatwork group, ask reviewer to have code-review.
+    9.3. Repaste pull request page's URL to Slack group, ask reviewer to have code-review.
 
 10. When more than 2 reviewers gave you OK comment, reviewer who gave the final OK comment will merge that pull request.
+
 11. Back to 1 step.
 
 ### Fix conflict error when rebasing

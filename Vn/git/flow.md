@@ -62,10 +62,10 @@ Từ đây, Central Repository và Forked Repository sẽ được gọi lần l
 
 5. Tại origin trên Github（Bitbucket）、từ branch `task/1234` đã được push lên hãy gửi pull-request đối với branch master của upstream.
 
-6. Hãy gửi link URL của trang pull-request cho reviewer trên chatwork để tiến hành review code.
+6. Hãy gửi link URL của trang pull-request cho reviewer trên Slack để tiến hành review code.
 
     6.1. Trong trường hợp reviewer có yêu cầu sửa chữa, hãy thực hiện các bước 3. 〜 5..
-    6.2. Tiếp tục gửi lại URL cho reviewer trên chatwork để tiến hành việc review code.
+    6.2. Tiếp tục gửi lại URL cho reviewer trên Slack để tiến hành việc review code.
 
 7. Nếu trên 2 người reviewer đồng ý với pull-request, người reviewer cuối cùng sẽ thực hiện việc merge pull-request.
    Revewer xác nhận sự đồng ý bằng comment OK.

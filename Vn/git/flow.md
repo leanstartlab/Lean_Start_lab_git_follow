@@ -5,21 +5,21 @@ Flow tham khảo: [A successful Git branching model](http://nvie.com/posts/a-suc
 ### Giả định
 * Đã tạo Central Repository (Nguồn trung tâm) trên Github（hoặc Bitbucket）.
 * Branch mặc định của Central Repository là master.
-* Lập trình viên có thể  fork (tạo nhánh) đối với Central Repository.
+* Lập trình viên có thể  fork đối với Central Repository.
 * Đã quyết định người review và người có quyền merge.
 
 ### Nguyên tắc
 * Mỗi pull-request tương ứng với một ticket.
 * Mỗi một pull-request không hạn chế số lượng commit
-* Pull-request title phải đặt sao cho tương ứng với title của task với format `refs [Loại ticket] #[Số ticket] [Nội dung ticket]` （Ví dụ: `refs bug #1234 Sửa lỗi cache`）.
-* Đối với commit title, trong trường hợp pull-request đó chỉ có 1 commit thì có thể đặt commit title tương tự như trên là `refs [Loại ticket] #[Số ticket] [Nội dung ticket]` （Ví dụ: `refs bug #1234 Sửa lỗi cache`）.\
+* Pull-request title phải đặt sao cho tương ứng với title của task với format `#[Số ticket] [Nội dung ticket]` （Ví dụ: `refs bug #1234 Sửa lỗi cache`）.
+* Đối với commit title, trong trường hợp pull-request đó chỉ có 1 commit thì có thể đặt commit title tương tự như trên là `#[Số ticket] [Nội dung ticket]` （Ví dụ: `#1234 Sửa lỗi cache`）.\
   Tuy nhiên với trường hợp 1 ppull-request có chứa nhiêù commit thì cần phải ghi rõ trong nội dung commit title là trong commit đó xử lý đối ứng vấn đề gì.
     * Ví dụ:
-        1. Pull-request title: `refs bug #1234 Sửa lỗi cache`
+        1. Pull-request title: `#1234 Sửa lỗi cache`
         2. Trong trường hợp pull-request có 2 commit thì nội dung commit title của 2 commit sẽ tương ứng như sau
             * `Tạo method thực hiện việc clear cache trong Model`
             * `Tại controller gọi method ở Model để thực hiện việc clear cache`
-* Tại môi trường local(trên máy lập trình viên), tuyệt đối không được thay đổi code khi ở branch master. Nhất định phải thao tác trên branch khởi tạo để làm task.
+* Tại môi trường local(trên máy lập trình viên), tuyệt đối không được thay đổi code khi ở branch master và develop. Nhất định phải thao tác trên branch khởi tạo để làm task.
 
 ### Chuẩn bị
 
@@ -30,25 +30,25 @@ Flow tham khảo: [A successful Git branching model](http://nvie.com/posts/a-suc
     $ git clone [URL của Forked Repository]
     ```
 
-3. Truy cập vào thư mục đã được tạo ra sau khi clone, đăng ký Central Repository dưới tên `upstream`.
+3. Truy cập vào thư mục đã được tạo ra sau khi clone, đăng ký Central Repository dưới tên `lsl`.
     ```sh
     $ cd [thư mục được tạo ra]
-    $ git remote add upstream [URL của Central Repository]
+    $ git remote add lsl [URL của Central Repository]
     ```
 
 ### Quy trình
 
-Từ đây, Central Repository và Forked Repository sẽ được gọi lần lượt là `upstream` và `origin`.
+Từ đây, Central Repository và Forked Repository sẽ được gọi lần lượt là `lsl` và `origin`.
 
-1. Đồng bộ hóa branch master tại local với upstream.
+1. Đồng bộ hóa branch develop tại local với lsl.
     ```sh
-    $ git checkout master
-    $ git pull upstream master
+    $ git checkout -b develop
+    $ git pull lsl develop
     ```
 
-2. Tạo branch để làm task từ branch master ở local. Tên branch là số ticket của task（Ví dụ: `task/1234`）.
+2. Tạo branch để làm task từ branch develop ở local. Tên branch là số ticket của task（Ví dụ: `task/1234`）.
     ```sh
-    $ git checkout master # <--- Không cần thiết nếu đang ở trên branch master
+    $ git checkout develop # <--- Không cần thiết nếu đang ở trên branch develop
     $ git checkout -b task/1234
     ```
 
@@ -60,7 +60,7 @@ Từ đây, Central Repository và Forked Repository sẽ được gọi lần l
     $ git push origin task/1234
     ```
 
-5. Tại origin trên Github（Bitbucket）、từ branch `task/1234` đã được push lên hãy gửi pull-request đối với branch master của upstream.
+5. Tại origin trên Github（Bitbucket）、từ branch `task/1234` đã được push lên hãy gửi pull-request đối với branch develop của lsl.
 
 6. Hãy gửi link URL của trang pull-request cho reviewer trên Slack để tiến hành review code.
 
@@ -75,17 +75,17 @@ Từ đây, Central Repository và Forked Repository sẽ được gọi lần l
 
 ### Đối với dự án áp dụng quy định tương ứng với 1 pull-request chỉ cho phép 1 commit
 
-Từ đây, Central Repository và Forked Repository sẽ được gọi lần lượt là `upstream` và `origin`.
+Từ đây, Central Repository và Forked Repository sẽ được gọi lần lượt là `lsl` và `origin`.
 
-1. Đồng bộ hóa branch master tại local với upstream.
+1. Đồng bộ hóa branch develop tại local với lsl.
     ```sh
-    $ git checkout master
-    $ git pull upstream master
+    $ git checkout -b develop
+    $ git pull lsl develop
     ```
 
-2. Tạo branch để làm task từ branch master ở local. Tên branch là số ticket của task（Ví dụ: `task/1234`）.
+2. Tạo branch để làm task từ branch develop ở local. Tên branch là số ticket của task（Ví dụ: `task/1234`）.
     ```sh
-    $ git checkout master # <--- Không cần thiết nếu đang ở trên branch master
+    $ git checkout develop # <--- Không cần thiết nếu đang ở trên branch develop
     $ git checkout -b task/1234
     ```
 
@@ -96,18 +96,18 @@ Từ đây, Central Repository và Forked Repository sẽ được gọi lần l
     $ git rebase -i [Giá trị hash của commit trước commit đầu tiên trong quá trình làm task]
     ```
 
-5. Quay trở về branch master ở local và lấy code mới nhất về
+5. Quay trở về branch develop ở local và lấy code mới nhất về
 
     ```sh
-    $ git checkout master
-    $ git pull upstream master
+    $ git checkout develop
+    $ git pull lsl develop
     ```
 
-6. Quay trở lại branch làm task, sau đó rebase với branch master.
+6. Quay trở lại branch làm task, sau đó rebase với branch develop.
 
     ```sh
     $ git checkout task/1234
-    $ git rebase master
+    $ git rebase develop
     ```
     **Trường hợp xảy ra conflict trong quá trình rebase、hãy thực hiện các thao tác của mục「Khi xảy ra conflict trong quá trình rebase」.**
 
@@ -117,7 +117,7 @@ Từ đây, Central Repository và Forked Repository sẽ được gọi lần l
     $ git push origin task/1234
     ```
 
-8. Tại origin trên Github（Bitbucket）、từ branch `task/1234` đã được push lên hãy gửi pull-request đối với branch master của upstream.
+8. Tại origin trên Github（Bitbucket）、từ branch `task/1234` đã được push lên hãy gửi pull-request đối với branch develop của lsl.
 
 9. Hãy gửi link URL của trang pull-request cho reviewer trên Slac để tiến hành review code.
 
@@ -139,7 +139,7 @@ Từ đây, Central Repository và Forked Repository sẽ được gọi lần l
 
 Khi xảy ra conflict trong quá trình rebase, sẽ có hiển thị như dưới đây (tại thời điểm này sẽ bị tự động chuyển về một branch vô danh)
 ```sh
-$ git rebase master
+$ git rebase develop
 First, rewinding head to replay your work on top of it...
 Applying: refs #1234 Sửa lỗi cache
 Using index info to reconstruct a base tree...

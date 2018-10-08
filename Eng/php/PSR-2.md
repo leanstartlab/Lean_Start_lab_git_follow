@@ -16,7 +16,6 @@ interpreted as described in RFC 2119.
 [PSR-1]: ./PSR-1.md
 
 ## 1. Khái quát chung
------------
 
 - Code MUST follow a “coding style guide” PSR  [[PSR-1]].
 
@@ -75,7 +74,6 @@ class Foo extends Bar implements FooInterface
 ```
 
 ## 2. General
-----------
 
 ### 2.1 Basic Coding Standard
 
@@ -124,7 +122,6 @@ The PHP constants `true`, `false`, and `null` MUST be in lower case.
 [keywords]: http://php.net/manual/en/reserved.keywords.php
 
 ## 3. Namespace and Use Declarations
----------------------------------
 
 When present, there MUST be one blank line after the `namespace` declaration.
 
@@ -150,7 +147,6 @@ use OtherVendor\OtherPackage\BazClass;
 ```
 
 ## 4. Classes, Properties, và Methods
------------------------------------
 
 The term “class” refers to all classes, interfaces, and traits.
 
@@ -327,7 +323,6 @@ $foo->bar(
 ```
 
 ## 5. Control Structures
----------------------
 
 The general style rules for control structures are as follows:
 
@@ -446,7 +441,6 @@ try {
 ```
 
 ## 6. Closures
------------
 
 Closures MUST be declared with a space after the `function` keyword, and a space before and after the `use` keyword.
 

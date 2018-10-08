@@ -24,7 +24,6 @@ but SHOULD NOT do both.
 
 
 ## 2. Files
------------
 
 ### 2.1. PHP Tags
 
@@ -93,7 +92,6 @@ if (! function_exists('bar')) {
 
 
 ## 3. Namespace and Class Names
------------
 
 Namespaces and classes MUST follow an “autoloading” PSR: [[PSR-0], [PSR-4]].
 
@@ -128,7 +126,7 @@ class Vendor_Model_Foo
 ```
 
 ## 4. Class Constants, Properties, and Methods
------------
+
 
 The term “class” refers to all classes, interfaces, and traits.
 

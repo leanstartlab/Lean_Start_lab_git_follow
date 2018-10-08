@@ -10,8 +10,7 @@ của người khác. Nó thực hiện điều đó bằng cách đặt ra nh�
 [PSR-1]: ./PSR-1.md
 
 
-1. Khái quát chung
------------
+## 1. Khái quát chung
 
 - Code phải tuân theo "coding style guide" PSR [[PSR-1]].
 
@@ -72,8 +71,7 @@ class Foo extends Bar implements FooInterface
 }
 ```
 
-2. Tổng thể
-----------
+## 2. Tổng thể
 
 ### 2.1 Basic Coding Standard
 
@@ -116,8 +114,7 @@ Những constants của PHP là `true`, `false`, và `null` cũng cần phải v
 [keywords]: http://php.net/manual/en/reserved.keywords.php
 
 
-3. Khai báo Namespace và Use
----------------------------------
+## 3. Khai báo Namespace và Use
 
 Cần phải có một dòng trắng phía sau khai báo `namespace`.
 
@@ -142,8 +139,7 @@ use OtherVendor\OtherPackage\BazClass;
 ```
 
 
-4. Classes, Properties, và Methods
------------------------------------
+## 4. Classes, Properties, và Methods
 
 Từ class dưới đây được hiểu là cả những class bình thường, hay cả interfaces và traits.
 
@@ -327,8 +323,7 @@ $foo->bar(
 );
 ```
 
-5. Control Structures
----------------------
+## 5. Control Structures
 
 Những quy tắc chung khi viết Control Structures bao gồm:
 
@@ -452,7 +447,7 @@ try {
 }
 ```
 
-6. Closures
+## 6. Closures
 -----------
 
 Closures phải được định nghĩa mới một khoảng trắng phía sau keywork `function`, và một khoảng trắng ở phía trước cũng
@@ -555,8 +550,7 @@ $foo->bar(
 ```
 
 
-7. Kết luận
---------------
+## 7. Kết luận
 
 Có rất nhiều yếu tố về style hay practice khác được cố tình bỏ qua trong hướng dẫn này. Có thể kể ra như:
 

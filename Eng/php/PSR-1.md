@@ -7,7 +7,7 @@ This section of the standard comprises what should be considered the standard co
 [PSR-4]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader.md
 
 ## 1. Overview
------------
+
 - Files MUST use only `<?php` and `<?=` .
 
 - Files MUST use only UTF-8 without BOM for PHP code.

@@ -12,15 +12,15 @@ Reference flow: [A successful Git branching model](http://nvie.com/posts/a-succe
 ### Principle
 * Each pull request will match with only 1 redmine ticket.
 * Each pull-request does not limit the number of commits.
-* Title of commit will be `refs [tracker of ticket] #[number of ticket] [title of ticket]`. (For example: `refs bug #1234 Can not remove cache`).
-* For the commit title, in the case of pull-request there is only one commit, then the commit name is the same as above. `Refs [Ticket Type] # [Ticket Number] [Ticket Content]` (Example: `refs bug # 1234 Fixed a cache error. \
+* Title of commit will be `#[number of ticket] [title of ticket]`. (For example: `#1234 Can not remove cache`).
+* For the commit title, in the case of pull-request there is only one commit, then the commit name is the same as above. `[Ticket Number] [Ticket Content]` (Example: `# 1234 Fixed a cache error. \`
 * However, if a ppull-request contains multiple commits, it must be specified in the commit title that the response handles in the commit.
      * For example:
-         Pull-request title: `refs bug # 1234 Fixed a cache error
+         Pull-request title: `# 1234 Fixed a cache error`
          2. In case pull-request has 2 commits, the commit title of commit 2 will be as follows
              * `Create method for clearing cache in Model`
-             * `The controller calls the method in the model to perform a clear cache
-* In the local environment, the code can not be changed in the branch master. Must work on branch initialization to do task.
+             * `The controller calls the method in the model to perform a clear cache`
+* In the local environment, the code can not be changed in the branch master and develop. Must work on branch initialization to do task.
 
 ### Prepare
 
@@ -31,25 +31,25 @@ Reference flow: [A successful Git branching model](http://nvie.com/posts/a-succe
     $ git clone [URL of forked repository]
     ```
 
-3. Enter the directory created by `clone` command, register central repository as `upstream`.
+3. Enter the directory created by `clone` command, register central repository as `lsl`. (Lean Start Lab)
     ```sh
     $ cd [created directory]
-    $ git remote add upstream [URL of central repository]
+    $ git remote add lsl [URL of central repository]
     ```
 
 ### Develop
 
-From now, we will call central repository as `upstream`, forked repository as `origin`.
+From now, we will call central repository as `lsl`, forked repository as `origin`.
 
-1. Sync local's master branch with upstream's master branch.
+1. Sync local's develop branch with lsl's develop branch.
     ```sh
-    $ git checkout master
-    $ git pull upstream master
+    $ git checkout develop
+    $ git pull lsl develop
     ```
 
-2. Create new branch to do task from master branch on local. Name of branch should be number of that task.(For example: `task/1234`)
+2. Create new branch to do task from develop branch on local. Name of branch should be number of that task.(For example: `task/1234`)
     ```sh
-    $ git checkout master # <--- unnecessary in case already on master branch
+    $ git checkout develop # <--- unnecessary in case already on develop branch
     $ git checkout -b task/1234
     ```
 
@@ -61,7 +61,7 @@ From now, we will call central repository as `upstream`, forked repository as `o
     $ git push origin task/1234
     ```
 
-5. On Github (Bitbucket), create pull request from origin's  `task/1234` to upstream's `master` branch.
+5. On Github (Bitbucket), create pull request from origin's  `task/1234` to lsl's `develop` branch.
 
 6. Paste pull request page's URL to Slack group, ask reviewer to have code-review.
 
@@ -74,17 +74,17 @@ From now, we will call central repository as `upstream`, forked repository as `o
 
 ### For projects corresponding provisions applicable with 1 pull-request only allows 1 commit
 
-From now, we will call central repository as `upstream`, forked repository as `origin`.
+From now, we will call central repository as `lsl`, forked repository as `origin`.
 
-1. Sync local's master branch with upstream's master branch.
+1. Sync local's develop branch with lsl's develop branch.
     ```sh
-    $ git checkout master
-    $ git pull upstream master
+    $ git checkout develop
+    $ git pull lsl develop
     ```
 
-2. Create new branch to do task from master branch on local. Name of branch should be number of that task.(For example: `task/1234`)
+2. Create new branch to do task from develop branch on local. Name of branch should be number of that task.(For example: `task/1234`)
     ```sh
-    $ git checkout master # <--- unnecessary in case already on master branch
+    $ git checkout develop # <--- unnecessary in case already on develop branch
     $ git checkout -b task/1234
     ```
 
@@ -95,16 +95,16 @@ From now, we will call central repository as `upstream`, forked repository as `o
     $ git rebase -i [hash value of the commit before the first commit you created or the number of commits needs to be grouped]
     ```
 
-5. Move to local's master branch and update to latest version.
+5. Move to local's develop branch and update to latest version.
     ```sh
-    $ git checkout master
-    $ git pull upstream master
+    $ git checkout develop
+    $ git pull lsl develop
     ```
 
-6. Move back to your task branch, rebase this branch with master branch.
+6. Move back to your task branch, rebase this branch with develop branch.
     ```sh
     $ git checkout task/1234
-    $ git rebase master
+    $ git rebase develop
     ```
     **If conflict error occurs when rebasing, please refer to "fix conflict error when rebasing" procedure.**
 
@@ -114,7 +114,7 @@ From now, we will call central repository as `upstream`, forked repository as `o
     $ git push origin task/1234
     ```
 
-8. On Github (Bitbucket), create pull request from origin's  `task/1234` to upstream's `master` branch.
+8. On Github (Bitbucket), create pull request from origin's  `task/1234` to lsl's `develop` branch.
 
 9. Paste pull request page's URL to Slack group, ask reviewer to have code-review.
 
@@ -135,7 +135,7 @@ From now, we will call central repository as `upstream`, forked repository as `o
 
 If conflict error occurs when rebasing, it will be displayed as below (at this moment, you will be moved to anonymous branch automatically).
 ```sh
-$ git rebase master
+$ git rebase develop
 First, rewinding head to replay your work on top of it...
 Applying: refs #1234 Can not remove cache
 Using index info to reconstruct a base tree...

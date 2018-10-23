@@ -13,7 +13,7 @@ Flow tham khảo: [A successful Git branching model](http://nvie.com/posts/a-suc
 * Mỗi một pull-request không hạn chế số lượng commit
 * Pull-request title phải đặt sao cho tương ứng với title của task với format `#[Số ticket] [Nội dung ticket]` （Ví dụ: `refs bug #1234 Sửa lỗi cache`）.
 * Đối với commit title, trong trường hợp pull-request đó chỉ có 1 commit thì có thể đặt commit title tương tự như trên là `#[Số ticket] [Nội dung ticket]` （Ví dụ: `#1234 Sửa lỗi cache`）.\
-  Tuy nhiên với trường hợp 1 ppull-request có chứa nhiêù commit thì cần phải ghi rõ trong nội dung commit title là trong commit đó xử lý đối ứng vấn đề gì.
+  Tuy nhiên với trường hợp 1 pull-request có chứa nhiêù commit thì cần phải ghi rõ trong nội dung commit title là trong commit đó xử lý đối ứng vấn đề gì.
     * Ví dụ:
         1. Pull-request title: `#1234 Sửa lỗi cache`
         2. Trong trường hợp pull-request có 2 commit thì nội dung commit title của 2 commit sẽ tương ứng như sau
